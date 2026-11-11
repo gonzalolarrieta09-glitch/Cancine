@@ -26,7 +26,7 @@
       color: var(--text-main);
     }
 
-    /* Header Nav */
+    /* Header & Nav */
     header {
       background-color: rgba(15, 17, 23, 0.95);
       position: sticky;
@@ -64,7 +64,8 @@
       transition: color 0.2s;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       color: var(--accent-gold);
     }
 
@@ -76,6 +77,11 @@
       border-radius: 4px;
       font-weight: bold;
       cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-login:hover {
+      background-color: #b80710;
     }
 
     /* Hero Banner */
@@ -110,20 +116,34 @@
       font-weight: 800;
       cursor: pointer;
       text-transform: uppercase;
+      transition: transform 0.2s;
     }
 
-    /* Cartelera Grid */
+    .btn-ticket:hover {
+      transform: scale(1.05);
+    }
+
+    /* Container & Filters */
     .container {
       padding: 3rem 5%;
     }
 
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
     .section-title {
       font-size: 1.8rem;
-      margin-bottom: 1.5rem;
       border-left: 4px solid var(--accent-red);
       padding-left: 0.8rem;
     }
 
+    /* Cartelera Grid */
     .movies-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -166,7 +186,7 @@
     .movie-meta {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 1rem;
+      margin-bottom: 1.0rem;
     }
 
     .movie-btn {
@@ -179,7 +199,75 @@
       font-weight: bold;
       cursor: pointer;
       text-align: center;
-      text-decoration: none;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    .movie-btn:hover {
+      background-color: #b80710;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: var(--bg-card);
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      border: 1px solid var(--accent-red);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-gold);
+    }
+
+    .schedules-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .schedule-btn {
+      background-color: #252936;
+      color: white;
+      border: 1px solid #3a3f52;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .schedule-btn:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
     }
 
     /* Footer */
@@ -189,4 +277,136 @@
       text-align: center;
       color: var(--text-muted);
       border-top: 1px solid #222;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
 
+  <header>
+    <div class="logo">Can<span>Cine</span></div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Cartelera</a></li>
+        <li><a href="#">Próximamente</a></li>
+        <li><a href="#">Promociones</a></li>
+        <li><a href="#">Candystore</a></li>
+      </ul>
+    </nav>
+    <button class="btn-login">Iniciar Sesión</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>ESTRENO EXCLUSIVO</h1>
+      <p>Disfruta de la mejor experiencia en CanCine con salas 4DX e IMAX con sonido envolvente.</p>
+      <button class="btn-ticket">Comprar Entradas</button>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title">En Cartelera</h2>
+
+    <div class="movies-grid" style="margin-top: 1.5rem;">
+
+      <!-- Película 1 -->
+      <article class="movie-card">
+        <img class="movie-poster" src="https://picsum.photos/300/450?random=1" alt="Película 1">
+        <div class="movie-info">
+          <h3 class="movie-title">Misión Galáctica</h3>
+          <p class="movie-meta">Ciencia Ficción • 120 min</p>
+          <button class="movie-btn">Ver Horarios</button>
+        </div>
+      </article>
+
+      <!-- Película 2 -->
+      <article class="movie-card">
+        <img class="movie-poster" src="https://picsum.photos/300/450?random=2" alt="Película 2">
+        <div class="movie-info">
+          <h3 class="movie-title">El Sombrío Destino</h3>
+          <p class="movie-meta">Suspenso / Drama • 105 min</p>
+          <button class="movie-btn">Ver Horarios</button>
+        </div>
+      </article>
+
+      <!-- Película 3 -->
+      <article class="movie-card">
+        <img class="movie-poster" src="https://picsum.photos/300/450?random=3" alt="Película 3">
+        <div class="movie-info">
+          <h3 class="movie-title">Aventura en la Selva</h3>
+          <p class="movie-meta">Animación • 90 min</p>
+          <button class="movie-btn">Ver Horarios</button>
+        </div>
+      </article>
+
+      <!-- Película 4 -->
+      <article class="movie-card">
+        <img class="movie-poster" src="https://picsum.photos/300/450?random=4" alt="Película 4">
+        <div class="movie-info">
+          <h3 class="movie-title">Rivalidad Máxima</h3>
+          <p class="movie-meta">Acción • 135 min</p>
+          <button class="movie-btn">Ver Horarios</button>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Modal de Funciones -->
+  <div class="modal" id="ticketModal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h3 class="modal-title" id="modalMovieTitle">Título de la Película</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Selecciona el horario de función disponible:</p>
+      <div class="schedules-group">
+        <button class="schedule-btn">15:30</button>
+        <button class="schedule-btn">18:00</button>
+        <button class="schedule-btn">20:45</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 CanCine. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('ticketModal');
+      const modalTitle = document.getElementById('modalMovieTitle');
+      const closeBtn = document.querySelector('.modal-close');
+      const showBtns = document.querySelectorAll('.movie-btn');
+
+      showBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const card = e.target.closest('.movie-card');
+          const movieTitle = card.querySelector('.movie-title').textContent;
+          if (modalTitle) modalTitle.textContent = movieTitle;
+          if (modal) modal.classList.add('open');
+        });
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          modal.classList.remove('open');
+        });
+      }
+
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('open');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('schedule-btn')) {
+          const time = e.target.textContent;
+          alert(`Has seleccionado la función de las ${time}. ¡Redirigiendo a selección de butacas!`);
+          if (modal) modal.classList.remove('open');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
