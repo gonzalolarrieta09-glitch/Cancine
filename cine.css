@@ -1,1 +1,297 @@
+:root {
+  --bg-dark: #0f1117;
+  --bg-card: #181b23;
+  --accent-red: #e50914;
+  --accent-gold: #ffb400;
+  --text-main: #ffffff;
+  --text-muted: #a0a5b5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+}
+
+/* Header & Nav */
+header {
+  background-color: rgba(15, 17, 23, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  border-bottom: 2px solid var(--accent-red);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent-red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--accent-gold);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--accent-gold);
+}
+
+.btn-login {
+  background-color: var(--accent-red);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+  background-color: #b80710;
+}
+
+/* Hero Banner */
+.hero {
+  background: linear-gradient(180deg, rgba(15,17,23,0.3) 0%, rgba(15,17,23,1) 100%), 
+              url('https://picsum.photos/1200/500?random=10') center/cover no-repeat;
+  height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 3rem 5%;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.hero-content p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+
+.btn-ticket {
+  background-color: var(--accent-gold);
+  color: #000;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: transform 0.2s;
+}
+
+.btn-ticket:hover {
+  transform: scale(1.05);
+}
+
+/* Container & Filters */
+.container {
+  padding: 3rem 5%;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  border-left: 4px solid var(--accent-red);
+  padding-left: 0.8rem;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+  border: 1px solid #2a2e39;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--accent-red);
+  color: #fff;
+  border-color: var(--accent-red);
+}
+
+/* Cartelera Grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.movie-card {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(229, 9, 20, 0.3);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.movie-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.movie-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.movie-btn {
+  margin-top: auto;
+  background-color: var(--accent-red);
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.movie-btn:hover {
+  background-color: #b80710;
+}
+
+/* Modal Selector de Entradas */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content {
+  background-color: var(--bg-card);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  border: 1px solid var(--accent-red);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-gold);
+}
+
+.schedules-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.schedule-btn {
+  background-color: #252936;
+  color: white;
+  border: 1px solid #3a3f52;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.schedule-btn:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* Footer */
+footer {
+  background-color: #08090c;
+  padding: 2rem 5%;
+  text-align: center;
+  color: var(--text-muted);
+  border-top: 1px solid #222;
+  margin-top: 3rem;
+}
 
